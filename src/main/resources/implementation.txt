@@ -1,0 +1,64 @@
+CREATE SEQUENCE IF NOT EXISTS public.work_id_seq
+  INCREMENT 1
+  START 1
+  MINVALUE 1
+  MAXVALUE 999999
+  CACHE 1;
+CREATE TABLE IF NOT EXISTS public.work
+(
+    work_id INTEGER NOT NULL DEFAULT nextval('work_id_seq'::regclass),
+    work_name CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    work_desc CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    work_location CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    work_status_id INTEGER NOT NULL DEFAULT 0,
+    last_worked_on TIMESTAMP NOT NULL DEFAULT '1900-01-01 00:00:00',
+    work_type_id INTEGER NOT NULL DEFAULT 0,
+    work_priority_id INTEGER NOT NULL DEFAULT 0,
+    CONSTRAINT work_pkey PRIMARY KEY (work_id)
+);
+
+CREATE SEQUENCE IF NOT EXISTS public.work_priority_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 999999
+    CACHE 1;
+CREATE TABLE IF NOT EXISTS public.work_priority
+(
+    priority_id INTEGER NOT NULL DEFAULT nextval('work_priority_id_seq'::regclass),
+    priority_name CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    priority_code CHARACTER VARYING(50) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    priority_desc TEXT COLLATE pg_catalog."default" NOT NULL DEFAULT ''::text,
+    CONSTRAINT work_priority_pkey PRIMARY KEY (priority_id)
+);
+
+CREATE SEQUENCE IF NOT EXISTS public.work_status_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 999999
+    CACHE 1;
+CREATE TABLE IF NOT EXISTS public.work_status
+(
+    status_id INTEGER NOT NULL DEFAULT nextval('work_status_id_seq'::regclass),
+    status_name CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    status_code CHARACTER VARYING(50) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    status_desc TEXT COLLATE pg_catalog."default" NOT NULL DEFAULT ''::text,
+    CONSTRAINT work_status_pkey PRIMARY KEY (status_id)
+);
+
+CREATE SEQUENCE IF NOT EXISTS public.work_type_id_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 999999
+    CACHE 1;
+CREATE TABLE IF NOT EXISTS public.work_type
+(
+    type_id INTEGER NOT NULL DEFAULT nextval('work_type_id_seq'::regclass),
+    type_name CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    type_code CHARACTER VARYING(50) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    type_desc CHARACTER VARYING(255) COLLATE pg_catalog."default" NOT NULL DEFAULT ''::character varying,
+    CONSTRAINT work_type_pkey PRIMARY KEY (type_id)
+);
+
