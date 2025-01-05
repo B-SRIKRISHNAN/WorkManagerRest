@@ -2,8 +2,6 @@ package org.work.core.models;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-
 public class WorkError {
 
 	private int statusCode;
