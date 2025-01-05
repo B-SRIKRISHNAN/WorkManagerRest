@@ -4,10 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
 import org.work.core.exceptions.WorkManagerException;
 import org.work.core.models.Work;
-import org.work.core.models.WorkError;
 import org.work.core.repositories.WorkPriorityRepository;
 import org.work.core.repositories.WorkRepository;
 import org.work.core.repositories.WorkStatusRepository;
